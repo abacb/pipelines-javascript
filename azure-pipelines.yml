@@ -9,6 +9,16 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+resources:
+  pipelines:
+    - pipeline: DotNetWebPipeline
+      project: MyDotNetWebApp
+      source: DotNetWebPipeline
+      trigger: 
+        branches:
+        - release/*
+        - master
+
 steps:
 - task: NodeTool@0
   inputs:
